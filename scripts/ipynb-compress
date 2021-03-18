@@ -6,7 +6,7 @@ from hurry.filesize import size, verbose
 from tempfile import mkstemp
 from shutil import copyfile
 from os import close, remove
-from sys import exit
+from sys import exit, argv
 import argparse
 
 def main(filename, output_filename=None, img_width=2048, img_format='png'):
