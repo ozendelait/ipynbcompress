@@ -11,7 +11,7 @@ def remove_transparency(im, bg_colour=(255, 255, 255)):
         alpha = im.convert('RGBA').split()[-1]
         bg = Image.new("RGBA", im.size, bg_colour + (255,))
         bg.paste(im, mask=alpha)
-        return bg
+        return bg.convert('RGB')
     else:
         return im
 

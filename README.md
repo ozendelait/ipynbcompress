@@ -6,6 +6,8 @@
 
 ## Overview
 
+*Forked version: fixes for deprecated pypi packages, 2.7+, and jpeg support for transparent images*
+
 So you have included an image with `IPython.display.Image()` and the file size
 of your IPython Notebook got huge? No problem! This package will resize images
 in your notebook and compress them as PNG or JPEG. Images are only resized if
@@ -19,7 +21,7 @@ prefer fast loading times.
 Install using `pip`...
 
 ```bash
-pip install ipynbcompress
+pip install git+https://github.com/ozendelait/ipynbcompress.git
 ```
 
 ## Example
