@@ -5,6 +5,15 @@ from io import BytesIO
 from os import stat
 from nbformat import read, write
 
+#taken from https://stackoverflow.com/questions/35859140/remove-transparency-alpha-from-any-image-using-pil
+def remove_transparency(im, bg_colour=(255, 255, 255)):
+    if im.mode in ('RGBA', 'LA') or (im.mode == 'P' and 'transparency' in im.info):
+        alpha = im.convert('RGBA').split()[-1]
+        bg = Image.new("RGBA", im.size, bg_colour + (255,))
+        bg.paste(im, mask=alpha)
+        return bg
+    else:
+        return im
 
 def compress(filename, output_filename=None, img_width=2048, img_format='png'):
     """Compress images in IPython notebooks.
@@ -53,6 +62,8 @@ def compress(filename, output_filename=None, img_width=2048, img_format='png'):
                     new_size = [int(s*factor+0.5) for s in img.size]
                     img = img.resize(new_size)
                 out = BytesIO()
+                if img_format != "png":
+                    img = remove_transparency(img)
                 img.save(out, img_format)
                 out.seek(0)
                 mime = 'image/' + img_format
