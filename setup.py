@@ -30,9 +30,9 @@ setup(
     include_package_data=True,
     install_requires=[
         'Pillow',
+        'pyrsistent==0.16.1',
         'jsonschema',
         'ipython',
-        'climate',
         'hurry.filesize'
     ],
     license='MIT',
