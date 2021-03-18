@@ -3,7 +3,7 @@ from base64 import b64decode, b64encode
 from PIL import Image
 from io import BytesIO
 from os import stat
-from IPython.nbformat import read, write
+from nbformat import read, write
 
 
 def compress(filename, output_filename=None, img_width=2048, img_format='png'):
