@@ -33,7 +33,7 @@ def main(filename, output_filename=None, img_width=2048, img_format='png'):
 
         saved = compress(filename, temp_filename, img_width, img_format)
 
-        if output_filename:
+        if output_filename and len(output_filename) > 0:
             from_to = '%s->%s' % (filename, output_filename)
         else:
             from_to = filename
@@ -60,6 +60,7 @@ if __name__ == '__main__':
     parser.add_argument("filename", type=str, help="filename")
     parser.add_argument("-w", "--img_width", type=int, default=2048, help="image width")
     parser.add_argument("-f", "--img_format", type=str, default="png", help="image compression; png or jpeg")
+    parser.add_argument("-o", "--output_path", type=str, default="", help="Output file path; default: replace original")
     args = parser.parse_args()
     main(filename=args.filename, img_width=args.img_width, img_format=args.img_format)
     
