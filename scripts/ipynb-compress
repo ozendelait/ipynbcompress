@@ -42,12 +42,12 @@ def main(filename, output_filename=None, img_width=2048, img_format='png'):
         if saved > 100000:
             copyfile(temp_filename, output_filename)
             saved = size(saved, system=verbose)
-            print('%s: %s decrease' % (from_to, saved))
+            print('%s: %s decrease; updating %s' % (from_to, saved, output_filename))
         else:
             if filename == output_filename:
                 print('%s: compression less than 100k bytes - keeping original' % from_to)
             else:
-                print('%s: compression less than 100k bytes - copying original' % from_to)
+                print('%s: compression less than 100k bytes - copying original to %s' % (from_to, output_filename)))
                 copyfile(filename, output_filename)
 
         remove(temp_filename)
